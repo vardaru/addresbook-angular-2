@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Addressbook, Angular2 Way</title>
+    <base href="/">
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/typescript/lib/typescript.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <!--  App Styles -->
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,300italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="margin-top:10px">
+    <div class="page-header">
+        <h1>Address Book, Angular2 Way</h1>
+    </div>
+    <div class="row">
+        <address-book></address-book>
+    </div>
+</div>
+
+<script>
+    System.config({
+        transpiler: "typescript",
+        typescriptOptions: {emitDecoratorMetadata: true},
+        packages: {components: {defaultExtension: 'ts'}, services: {defaultExtension: 'ts'}, model: {defaultExtension: 'ts'}}
+    });
+    System.import('components/addressbook.component.ts');
+</script>
+
+<script type="application/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<script type="application/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
