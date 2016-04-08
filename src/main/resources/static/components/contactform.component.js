@@ -11,18 +11,16 @@ var contact_service_1 = require("../services/contact.service");
 var ContactFormComponent = (function () {
     function ContactFormComponent(contactService) {
         this.contactService = contactService;
-        this.selectContact = new core_1.EventEmitter();
-        this.formSubmitted = false;
+        this.selectContact = new contact_ts_1.Contact();
         this.formCleared = false;
     }
     ContactFormComponent.prototype.ngOnInit = function () {
-        this.contact = new contact_ts_1.Contact('', '', '', '', '');
+        this.contact = new contact_ts_1.Contact();
     };
     ContactFormComponent.prototype.onSubmit = function (form) {
         console.log('Form: ' + JSON.stringify(form.value));
         this.contactService.addContact(this.contact);
         this.contact = new contact_ts_1.Contact();
-        this.formSubmitted = true;
         this.formCleared = true;
     };
     ContactFormComponent.prototype.onNew = function (form) {
@@ -33,9 +31,6 @@ var ContactFormComponent = (function () {
     __decorate([
         core_1.Input('selectedContact')
     ], ContactFormComponent.prototype, "contact");
-    __decorate([
-        core_1.Output()
-    ], ContactFormComponent.prototype, "selectContact");
     ContactFormComponent = __decorate([
         core_1.Component({
             selector: 'contact-form',

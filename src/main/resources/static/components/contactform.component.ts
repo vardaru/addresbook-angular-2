@@ -10,26 +10,20 @@ import {ContactService} from "../services/contact.service";
 })
 export class ContactFormComponent implements OnInit {
     @Input('selectedContact') contact:Contact;
-    @Output() selectContact = new EventEmitter<Contact>();
-    formSubmitted = false;
+    selectContact = new Contact();
     formCleared = false;
 
     constructor(public contactService:ContactService) {
     }
 
     ngOnInit() {
-        this.contact = new Contact('',
-            '',
-            '',
-            '',
-            '');
+        this.contact = new Contact();
     }
 
     onSubmit(form) {
         console.log('Form: '+JSON.stringify(form.value));
         this.contactService.addContact(this.contact);
         this.contact=new Contact();
-        this.formSubmitted = true;
         this.formCleared=true;
     }
 
