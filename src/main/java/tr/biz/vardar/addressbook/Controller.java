@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
  * curl http://localhost:8080/api/all
  *
  * Created by seb on 12.08.2015.
+ * Updated by umitvardar on 05.04.2016
  */
 @RestController
 @RequestMapping("/api")
@@ -25,12 +27,16 @@ public class Controller {
 	@Autowired
 	ContactRepository repository;
 
+	@Autowired
+	CounterService counterService;
+
 	Logger logger = LoggerFactory.getLogger("Controller");
 
 	@ApiOperation("Returns all contacts in AddressBook")
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<Contact> findAll(){
 		logger.info("GET request received");
+		counterService.increment("addressbook.findall");
 		Iterable<Contact> all = repository.findAll();
 		ArrayList list = new ArrayList();
 		for (Contact contact : all) {
@@ -43,6 +49,7 @@ public class Controller {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ResponseEntity save(@RequestBody Contact contact){
 		logger.info("POST request received");
+		counterService.increment("addressbook.save");
 		try {
 			if(contact.getName().isEmpty() || contact.getSurname().isEmpty() || contact.getCity().isEmpty() || contact.getPhone().isEmpty()){
 				return ResponseEntity.badRequest().build(); //400
@@ -62,6 +69,7 @@ public class Controller {
 	@ApiOperation("Deletes given contact")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity delete(@PathVariable("id") String id){
+		counterService.increment("addressbook.delete");
 		repository.delete(id);
         logger.info("deleted: "+id);
 		return ResponseEntity.noContent().build();
