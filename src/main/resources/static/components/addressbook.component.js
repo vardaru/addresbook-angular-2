@@ -6,11 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("angular2/core");
-var browser_1 = require("angular2/platform/browser");
 var contact_service_1 = require("../services/contact.service");
 var http_1 = require("angular2/http");
 var contacttable_component_1 = require("./contacttable.component");
 var contactform_component_1 = require("./contactform.component");
+var user_service_1 = require("../services/user.service");
 var AddressBookComponent = (function () {
     function AddressBookComponent(contactService) {
         this.contactService = contactService;
@@ -26,11 +26,10 @@ var AddressBookComponent = (function () {
             selector: 'address-book',
             template: "\n        <contact-form [selectedContact]=\"contactService.contact\" (selectContact)=\"editContact($event)\"></contact-form>\n        <contact-table [contacts]=\"contactService.contacts\" (selectContact)=\"editContact($event)\"></contact-table>\n    ",
             directives: [contacttable_component_1.ContactTableComponent, contactform_component_1.ContactFormComponent],
-            providers: [http_1.HTTP_PROVIDERS, contact_service_1.ContactService]
+            providers: [http_1.HTTP_PROVIDERS, contact_service_1.ContactService, user_service_1.UserService]
         })
     ], AddressBookComponent);
     return AddressBookComponent;
 }());
 exports.AddressBookComponent = AddressBookComponent;
-browser_1.bootstrap(AddressBookComponent, [http_1.HTTP_PROVIDERS, contact_service_1.ContactService]);
 //# sourceMappingURL=addressbook.component.js.map
