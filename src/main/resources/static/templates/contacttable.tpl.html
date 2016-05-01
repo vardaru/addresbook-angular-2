@@ -10,15 +10,15 @@
             <th>Phone</th>
         </tr>
         </thead>
-        <tbody *ngFor="#item of contacts">
-        <tr (click)="onSelect(item)">
-            <td></td>
-            <td></td>
-            <td>{{item.name}}</td>
-            <td>{{item.surname | uppercasetr}}</td>
-            <td>{{item.city}}</td>
-            <td>{{item.phone}}</td>
-        </tr>
+        <tbody *ngFor="let item of contacts">
+            <tr (click)="onSelect(item)">
+                <td></td>
+                <td></td>
+                <td>{{item.name}}</td>
+                <td>{{item.surname | uppercasetr}}</td>
+                <td>{{item.city}}</td>
+                <td>{{item.phone}}</td>
+            </tr>
         </tbody>
     </table>
 </div>

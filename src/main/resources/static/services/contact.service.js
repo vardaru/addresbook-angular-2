@@ -5,8 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-///<reference path="../node_modules/rxjs/add/operator/map.d.ts"/>
-///<reference path="../node_modules/rxjs/add/operator/catch.d.ts"/>
+///<reference path="../node_modules/rxjs/Observable.d.ts"/>
 var core_1 = require("angular2/core");
 var Observable_1 = require("rxjs/Observable");
 require('rxjs/Rx');
@@ -25,8 +24,7 @@ var ContactService = (function () {
     ContactService.prototype.saveOrUpdate = function (contact) {
         var _this = this;
         this.postData(contact)
-            .subscribe(function (res) { return _this.contacts = res.json(); })
-            .catch(this.handleError);
+            .subscribe(function (res) { return _this.contacts = res.json(); });
     };
     ContactService.prototype.handleError = function (error) {
         // in a real world app, we may send the error to some remote logging infrastructure

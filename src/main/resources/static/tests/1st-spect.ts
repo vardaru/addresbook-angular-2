@@ -11,12 +11,12 @@ it('null is not the same thing as undefined',
 
 describe('Contact', ()=>{
     it('has a name', ()=>{
-        let contact: Contact = {id: 1, name: 'Ümit', surname:'Vardar', city:'Edirne', phone:'1234567'};
+        let contact: Contact = {id: '1', name: 'Ümit', surname:'Vardar', city:'Edirne', phone:'1234567'};
         expect(contact.name).toEqual('Ümit');
     });
 
     it('has an id', ()=>{
-        let contact: Contact = {id: 1, name: 'Ümit', surname:'Vardar', city:'Edirne', phone:'1234567'};
+        let contact: Contact = {id: '1', name: 'Ümit', surname:'Vardar', city:'Edirne', phone:'1234567'};
         expect(contact.id).toEqual('1');
     });
 } );

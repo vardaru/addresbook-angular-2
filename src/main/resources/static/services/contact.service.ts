@@ -1,5 +1,4 @@
-///<reference path="../node_modules/rxjs/add/operator/map.d.ts"/>
-///<reference path="../node_modules/rxjs/add/operator/catch.d.ts"/>
+///<reference path="../node_modules/rxjs/Observable.d.ts"/>
 import {Injectable} from "angular2/core";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/Rx';
@@ -23,7 +22,7 @@ export class ContactService {
     saveOrUpdate(contact:Contact){
         this.postData(contact)
             .subscribe(res => this.contacts = res.json())
-            .catch(this.handleError)
+            ;
     }
     private handleError (error: Response) {
         // in a real world app, we may send the error to some remote logging infrastructure
